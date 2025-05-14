@@ -2,7 +2,6 @@ node --inspect --import tsx ./src/index.ts
 
 wenkaikai
 
-wen2012zzz
 aternos
 
 一、核心解决方案：安装兼容的 Node.js 旧版本
