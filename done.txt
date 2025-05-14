@@ -1,0 +1,70 @@
+node --inspect --import tsx ./src/index.ts
+
+wenkaikai
+
+wen2012zzz
+aternos
+
+一、核心解决方案：安装兼容的 Node.js 旧版本
+1. 选择支持 Windows 7 的版本
+官方支持的最后 LTS 版本：Node.js 12.x（如 12.22.1）是最后支持 Windows 7 的 LTS 版本。
+替代构建版本：GitHub 项目提供兼容 Windows 7 的 Node.js 14.x/16.x 构建（node-win7）。
+2. 下载与安装步骤
+官方旧版本下载：
+访问 Node.js 历史版本页面。
+选择 v12.22.1（或相近版本），下载对应系统架构的安装包（32 位 / 64 位）。
+GitHub 构建版本下载：
+进入 node-win7 仓库。
+在 Releases 中选择适合的版本（如 node-v14.21.3-win7-x64.7z）。
+解压后将 node.exe 和 npm.cmd 复制到 C:\Program Files\nodejs（需手动创建目录）。
+3. 配置环境变量
+添加路径：
+右键「计算机」→「属性」→「高级系统设置」→「环境变量」。
+在「系统变量」中找到 Path，添加 C:\Program Files\nodejs。
+验证安装：
+打开命令提示符，输入 node -v 和 npm -v，若显示版本号则安装成功。
+二、系统依赖修复（关键步骤）
+1. 安装 Visual C++ Redistributable
+下载地址：
+64 位：vc_redist.x64.exe。
+32 位：vc_redist.x86.exe。
+安装说明：
+运行下载的安装程序，选择「修复」或「安装」，完成后重启电脑。
+2. 升级 .NET Framework
+检查当前版本：
+打开「控制面板」→「程序和功能」→「打开或关闭 Windows 功能」。
+查看 .NET Framework 4.x 是否勾选，若未安装则勾选并点击「确定」。
+手动安装：
+访问微软官网下载 .NET Framework 4.8 离线安装包，安装后重启。
+三、兼容性增强设置
+1. 启用兼容模式（可选）
+操作步骤：
+找到 node.exe（默认路径：C:\Program Files\nodejs）。
+右键点击 →「属性」→「兼容性」选项卡。
+勾选「以兼容模式运行这个程序」，选择「Windows 7」。
+点击「确定」保存设置。
+2. 使用 32 位版本（针对 32 位系统）
+下载地址：
+官方旧版本：Node.js 12.x 32 位。
+GitHub 构建：node-v14.21.3-win7-x86.7z。
+注意：32 位版本内存限制为 4GB，适合轻量级应用。
+四、常见问题处理
+1. 缺少依赖文件（如 VCRUNTIME140.dll）
+解决方案：
+重新安装 Visual C++ Redistributable（见上文步骤），确保选择与系统架构匹配的版本。
+2. npm 安装报错
+尝试方法：
+以管理员身份运行命令提示符。
+执行 npm cache clean --force 清除缓存。
+重新运行 npm install。
+3. Node.js 无法启动
+检查步骤：
+确认系统时间是否正确（可能影响证书验证）。
+禁用杀毒软件或添加 Node.js 到信任列表。
+五、终极建议：升级操作系统
+推荐方案：
+Windows 7 已停止官方支持，存在安全风险。建议升级至 Windows 10/11 或 Linux，以获得最新 Node.js 版本支持和安全更新。
+替代方案：
+使用虚拟机（如 VirtualBox）在 Windows 7 中运行 Windows 10 或 Linux 系统，以隔离环境运行新版 Node.js。
+
+通过以上步骤，可在 Windows 7 上稳定运行 Node.js 旧版本。若仍遇到问题，建议参考 Node.js 官方文档 或社区论坛（如 Stack Overflow）获取进一步支持
